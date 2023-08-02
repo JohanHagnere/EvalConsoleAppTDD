@@ -78,5 +78,20 @@ namespace EvalConsoleAppTest
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("XIV", nombreRomain);
         }
+
+        [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 15 et 18 " +
+                              "QUAND je le convertis en nombres romains " +
+                              "ALORS j'obtiens XV plus <(nombreUnités-15)> fois I")]
+        [InlineData(15)]
+        [InlineData(16)]
+        [InlineData(17)]
+        [InlineData(18)]
+        public void TestQuinzePlusUnité(int nombreUnités)
+        {
+            var nombreRomain = Convertisseur.Convertir(nombreUnités);
+
+            var suiteDeI = new string('I', nombreUnités - 15);
+            Assert.Equal("XV" + suiteDeI, nombreRomain);
+        }
     }
 }
