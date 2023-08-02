@@ -7,7 +7,7 @@ namespace EvalConsoleAppTest
             return chiffreArabe switch
             {
                 <= 3 => new string('I', chiffreArabe),
-                _ => "IV"
+                4 => "IV",
             };
         }
     }
@@ -31,11 +31,20 @@ namespace EvalConsoleAppTest
         [Fact(DisplayName = "ETANT DONNE le chiffre IV " +
                             "QUAND je le convertis en nombres romains " +
                             "ALORS j'obtiens IV")]
-        public void Test4()
+        public void TestQuatre()
         {
             const int chiffreArabe = 4;
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("IV", nombreRomain);
+        }
+        [Fact(DisplayName = "ETANT DONNE le chiffre 5 " +
+                            "QUAND je le convertis en nombres romains " +
+                            "ALORS j'obtiens V")]
+        public void TestCinq()
+        {
+            const int chiffreArabe = 5;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("V", nombreRomain);
         }
     }
 }
