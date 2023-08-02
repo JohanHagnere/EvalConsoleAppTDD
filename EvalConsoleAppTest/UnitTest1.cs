@@ -23,5 +23,16 @@ namespace EvalConsoleAppTest
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("I", nombreRomain);
         }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 2 " +
+                            "QUAND je le convertis en nombres romains " +
+                            "ALORS j'obtiens II")]
+        public void Test2()
+        {
+            const int chiffreArabe = 2;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("II", nombreRomain);
+        }
+
     }
 }
