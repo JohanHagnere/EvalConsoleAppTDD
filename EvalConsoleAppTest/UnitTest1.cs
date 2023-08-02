@@ -70,5 +70,15 @@ namespace EvalConsoleAppTest
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("VII", nombreRomain);
         }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 8 " +
+                            "QUAND je le convertis en nombres romains " +
+                            "ALORS j'obtiens VIII")]
+        public void TestHuit()
+        {
+            const int chiffreArabe = 8;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("VIII", nombreRomain);
+        }
     }
 }
