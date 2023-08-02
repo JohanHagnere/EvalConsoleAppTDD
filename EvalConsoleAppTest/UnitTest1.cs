@@ -53,5 +53,15 @@ namespace EvalConsoleAppTest
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("IX", nombreRomain);
         }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 10 " +
+                            "QUAND je le convertis en nombres romains " +
+                            "ALORS j'obtiens X")]
+        public void TestDix()
+        {
+            const int chiffreArabe = 10;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("X", nombreRomain);
+        }
     }
 }
