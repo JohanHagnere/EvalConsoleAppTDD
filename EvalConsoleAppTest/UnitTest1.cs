@@ -56,5 +56,15 @@ namespace EvalConsoleAppTest
             var suiteDeI = new string('I', nombreUnités - 5);
             Assert.Equal("V" + suiteDeI, nombreRomain);
         }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 9 " +
+                            "QUAND je le convertis en nombres romains " +
+                            "ALORS j'obtiens IX")]
+        public void TestNeuf()
+        {
+            const int chiffreArabe = 9;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("IX", nombreRomain);
+        }
     }
 }
