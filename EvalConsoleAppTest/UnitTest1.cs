@@ -147,14 +147,47 @@ namespace EvalConsoleAppTest
             }
         }
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre 30 " +
-                            "QUAND je le convertis en nombres romains " +
-                            "ALORS j'obtiens XXX")]
-        public void TestTrente()
+        [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 30 et 39 " +
+                              "QUAND je le convertis en nombres romains " +
+                              "ALORS j'obtiens XXX plus V ou I en fonction de la différence avec 35")]
+        [InlineData(30)]
+        [InlineData(31)]
+        [InlineData(32)]
+        [InlineData(33)]
+        [InlineData(34)]
+        [InlineData(35)]
+        [InlineData(36)]
+        [InlineData(37)]
+        [InlineData(38)]
+        [InlineData(39)]
+        public void TestTrentePlusUnité(int nombreUnités)
         {
-            const int chiffreArabe = 30;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("XXX", nombreRomain);
+            var nombreRomain = Convertisseur.Convertir(nombreUnités);
+
+            switch (nombreUnités)
+            {
+                case 39:
+                    Assert.Equal("XXXIX", nombreRomain);
+                    break;
+                case 35:
+                    Assert.Equal("XXXV", nombreRomain);
+                    break;
+                case 34:
+                    Assert.Equal("XXXIV", nombreRomain);
+                    break;
+                case < 34:
+                {
+                    var suiteDeI = new string('I', nombreUnités - 30);
+                    Assert.Equal("XXX" + suiteDeI, nombreRomain);
+                    break;
+                }
+                default:
+                {
+                    var suiteDeI = new string('I', nombreUnités - 35);
+                    Assert.Equal("XXXV" + suiteDeI, nombreRomain);
+                    break;
+                }
+            }
         }
     }
 }
