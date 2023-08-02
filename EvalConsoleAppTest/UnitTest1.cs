@@ -6,6 +6,10 @@ namespace EvalConsoleAppTest
         {
             switch (chiffreArabe)
             {
+                case 1:
+                    return "I";
+                case 2:
+                    return "II";
                 default:
                     return "I";
             }
