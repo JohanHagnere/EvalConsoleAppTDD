@@ -4,7 +4,11 @@ namespace EvalConsoleAppTest
     {
         public static string Convertir(int chiffreArabe)
         {
-            return "test";
+            switch (chiffreArabe)
+            {
+                default:
+                    return "I";
+            }
         }
     }
 
