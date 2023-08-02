@@ -146,5 +146,15 @@ namespace EvalConsoleAppTest
                 }
             }
         }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 30 " +
+                            "QUAND je le convertis en nombres romains " +
+                            "ALORS j'obtiens XXX")]
+        public void TestTrente()
+        {
+            const int chiffreArabe = 30;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("XXX", nombreRomain);
+        }
     }
 }
