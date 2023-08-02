@@ -64,7 +64,7 @@ namespace EvalConsoleAppTest
             Assert.Equal("X", nombreRomain);
         }
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre 11" +
+        [Fact(DisplayName = "ETANT DONNE le chiffre 11 " +
                             "QUAND je le convertis en nombres romains" +
                             "ALORS j'obtiens XI")]
         public void TestOnze()
@@ -72,6 +72,16 @@ namespace EvalConsoleAppTest
             const int chiffreArabe = 11;
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("XI", nombreRomain);
+        }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 12 " +
+                            "QUAND je le convertis en nombres romains" +
+                            "ALORS j'obtiens XII")]
+        public void TestDouze()
+        {
+            const int chiffreArabe = 12;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("XII", nombreRomain);
         }
     }
 }
