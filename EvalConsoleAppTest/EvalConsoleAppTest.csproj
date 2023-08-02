@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ConvertisseurRomain\ConvertisseurRomain.csproj" />
+  </ItemGroup>
+
 </Project>
