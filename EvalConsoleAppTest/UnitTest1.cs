@@ -42,44 +42,19 @@ namespace EvalConsoleAppTest
             Assert.Equal("IV", nombreRomain);
         }
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre 5 " +
-                            "QUAND je le convertis en nombres romains " +
-                            "ALORS j'obtiens V")]
-        public void TestCinq()
+        [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 5 et 8 " +
+                              "QUAND je le convertis en nombres romains " +
+                              "ALORS j'obtiens V plus <(nombreUnités-5)> fois I")]
+        [InlineData(5)]
+        [InlineData(6)]
+        [InlineData(7)]
+        [InlineData(8)]
+        public void TestCinqPlusUnité(int nombreUnités)
         {
-            const int chiffreArabe = 5;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("V", nombreRomain);
-        }
+            var nombreRomain = Convertisseur.Convertir(nombreUnités);
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre 6 " +
-                            "QUAND je le convertis en nombres romains " +
-                            "ALORS j'obtiens VI")]
-        public void TestSix()
-        {
-            const int chiffreArabe = 6;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("VI", nombreRomain);
-        }
-
-        [Fact(DisplayName = "ETANT DONNE le chiffre 7 " +
-                            "QUAND je le convertis en nombres romains " +
-                            "ALORS j'obtiens VII")]
-        public void TestSept()
-        {
-            const int chiffreArabe = 7;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("VII", nombreRomain);
-        }
-
-        [Fact(DisplayName = "ETANT DONNE le chiffre 8 " +
-                            "QUAND je le convertis en nombres romains " +
-                            "ALORS j'obtiens VIII")]
-        public void TestHuit()
-        {
-            const int chiffreArabe = 8;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("VIII", nombreRomain);
+            var suiteDeI = new string('I', nombreUnités - 5);
+            Assert.Equal("V" + suiteDeI, nombreRomain);
         }
     }
 }
