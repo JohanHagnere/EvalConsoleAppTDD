@@ -8,6 +8,7 @@ namespace EvalConsoleAppTest
             {
                 <= 3 => new string('I', chiffreArabe),
                 4 => "IV",
+                _ => "V"
             };
         }
     }
