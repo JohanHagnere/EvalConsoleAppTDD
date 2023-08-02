@@ -10,7 +10,8 @@ namespace EvalConsoleAppTest
                 4 => "IV",
                 5 => "V",
                 6 => "VI",
-                _ => "VII"
+                7 => "VII",
+                _ => "VIII"
             };
         }
     }
