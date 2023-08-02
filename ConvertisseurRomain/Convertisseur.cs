@@ -12,9 +12,7 @@
                 < 9 => "V" + Convertir(chiffreArabe - 5),
                 9 => "IX",
                 10 => "X",
-                11 => "XI",
-                12 => "XII",
-                _ => "XIII"
+                _ => "X" + Convertir(chiffreArabe - 10)
             };
         }
     }

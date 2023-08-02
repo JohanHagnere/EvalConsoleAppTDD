@@ -54,44 +54,19 @@ namespace EvalConsoleAppTest
             Assert.Equal("IX", nombreRomain);
         }
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre 10 " +
-                            "QUAND je le convertis en nombres romains " +
-                            "ALORS j'obtiens X")]
-        public void TestDix()
+        [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 10 et 13 " +
+                              "QUAND je le convertis en nombres romains " +
+                              "ALORS j'obtiens X plus <(nombreUnités-10)> fois I")]
+        [InlineData(10)]
+        [InlineData(11)]
+        [InlineData(12)]
+        [InlineData(13)]
+        public void TestDixPlusUnité(int nombreUnités)
         {
-            const int chiffreArabe = 10;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("X", nombreRomain);
-        }
+            var nombreRomain = Convertisseur.Convertir(nombreUnités);
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre 11 " +
-                            "QUAND je le convertis en nombres romains" +
-                            "ALORS j'obtiens XI")]
-        public void TestOnze()
-        {
-            const int chiffreArabe = 11;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("XI", nombreRomain);
-        }
-
-        [Fact(DisplayName = "ETANT DONNE le chiffre 12 " +
-                            "QUAND je le convertis en nombres romains" +
-                            "ALORS j'obtiens XII")]
-        public void TestDouze()
-        {
-            const int chiffreArabe = 12;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("XII", nombreRomain);
-        }
-
-        [Fact(DisplayName = "ETANT DONNE le chiffre 13 " +
-                            "QUAND je le convertis en nombres romains" +
-                            "ALORS j'obtiens XIII")]
-        public void TestTreize()
-        {
-            const int chiffreArabe = 13;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("XIII", nombreRomain);
+            var suiteDeI = new string('I', nombreUnités - 10);
+            Assert.Equal("X" + suiteDeI, nombreRomain);
         }
     }
 }
