@@ -103,5 +103,15 @@ namespace EvalConsoleAppTest
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("XIX", nombreRomain);
         }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 20 " +
+                            "QUAND je le convertis en nombres romains " +
+                            "ALORS j'obtiens XX")]
+        public void TestVingt()
+        {
+            const int chiffreArabe = 20;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("XX", nombreRomain);
+        }
     }
 }
