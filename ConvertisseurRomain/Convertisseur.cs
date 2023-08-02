@@ -10,7 +10,8 @@
                 4 => "IV",
                 5 => "V",
                 < 9 => "V" + Convertir(chiffreArabe - 5),
-                _ => "IX"
+                9 => "IX",
+                _ => "X"
             };
         }
     }
