@@ -104,14 +104,47 @@ namespace EvalConsoleAppTest
             Assert.Equal("XIX", nombreRomain);
         }
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre 20 " +
-                            "QUAND je le convertis en nombres romains " +
-                            "ALORS j'obtiens XX")]
-        public void TestVingt()
+        [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 20 et 29 " +
+                              "QUAND je le convertis en nombres romains " +
+                              "ALORS j'obtiens XX plus <(nombreUnités-20)> fois I")]
+        [InlineData(20)]
+        [InlineData(21)]
+        [InlineData(22)]
+        [InlineData(23)]
+        [InlineData(24)]
+        [InlineData(25)]
+        [InlineData(26)]
+        [InlineData(27)]
+        [InlineData(28)]
+        [InlineData(29)]
+        public void TestVingtPlusUnité(int nombreUnités)
         {
-            const int chiffreArabe = 20;
-            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
-            Assert.Equal("XX", nombreRomain);
+            var nombreRomain = Convertisseur.Convertir(nombreUnités);
+
+            switch (nombreUnités)
+            {
+                case 29:
+                    Assert.Equal("XXIX", nombreRomain);
+                    break;
+                case 25:
+                    Assert.Equal("XXV", nombreRomain);
+                    break;
+                case 24:
+                    Assert.Equal("XXIV", nombreRomain);
+                    break;
+                case < 24:
+                {
+                    var suiteDeI = new string('I', nombreUnités - 20);
+                    Assert.Equal("XX" + suiteDeI, nombreRomain);
+                    break;
+                }
+                default:
+                {
+                    var suiteDeI = new string('I', nombreUnités - 25);
+                    Assert.Equal("XXV" + suiteDeI, nombreRomain);
+                    break;
+                }
+            }
         }
     }
 }
