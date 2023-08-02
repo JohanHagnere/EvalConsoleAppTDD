@@ -8,7 +8,8 @@ namespace EvalConsoleAppTest
             {
                 <= 3 => new string('I', chiffreArabe),
                 4 => "IV",
-                _ => "V"
+                5 => "V",
+                _ => "VI"
             };
         }
     }
@@ -29,7 +30,7 @@ namespace EvalConsoleAppTest
             Assert.Equal(résultatAttendu, nombreRomain);
         }
 
-        [Fact(DisplayName = "ETANT DONNE le chiffre IV " +
+        [Fact(DisplayName = "ETANT DONNE le chiffre 4 " +
                             "QUAND je le convertis en nombres romains " +
                             "ALORS j'obtiens IV")]
         public void TestQuatre()
