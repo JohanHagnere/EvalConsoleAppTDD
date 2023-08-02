@@ -83,5 +83,15 @@ namespace EvalConsoleAppTest
             var nombreRomain = Convertisseur.Convertir(chiffreArabe);
             Assert.Equal("XII", nombreRomain);
         }
+
+        [Fact(DisplayName = "ETANT DONNE le chiffre 13 " +
+                            "QUAND je le convertis en nombres romains" +
+                            "ALORS j'obtiens XIII")]
+        public void TestTreize()
+        {
+            const int chiffreArabe = 13;
+            var nombreRomain = Convertisseur.Convertir(chiffreArabe);
+            Assert.Equal("XIII", nombreRomain);
+        }
     }
 }
